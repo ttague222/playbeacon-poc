@@ -1,8 +1,8 @@
-# PlayBeacon PoC — AI Game Recommendation Engine
+# PlayBeacon PoC: AI Game Recommendation Engine
 
 > Proof of concept that validated the core recommendation engine powering PlayBeacon.
 
-Before committing to a full product architecture, this prototype tested whether AI-powered personalized game discovery was feasible at scale using vector similarity search. It was — and became the technical foundation for [PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile).
+Before committing to a full product architecture, this prototype tested whether AI-powered personalized game discovery was feasible at scale using vector similarity search. It was, and it became the technical foundation for [PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile).
 
 ---
 
@@ -11,7 +11,7 @@ Before committing to a full product architecture, this prototype tested whether 
 - **pgvector similarity search** produces relevant, fast game recommendations
 - **OpenAI embeddings** effectively capture game "feel" from titles and descriptions
 - A **Steam-style discovery queue UX** translates naturally to the Roblox context
-- The full pipeline — crawl → embed → store → recommend — can run end-to-end
+- The full pipeline (crawl, embed, store, recommend) can run end-to-end
 
 ---
 
@@ -21,7 +21,7 @@ Before committing to a full product architecture, this prototype tested whether 
 playbeacon-poc/
 ├── backend/
 │   ├── crawler/     # Indexes Roblox games by keyword
-│   ├── embeddings/  # OpenAI embedding pipeline → pgvector storage
+│   ├── embeddings/  # OpenAI embedding pipeline to pgvector storage
 │   └── api/         # FastAPI recommendation endpoints
 └── frontend/        # React swipe interface (discovery queue)
 ```
@@ -41,16 +41,16 @@ playbeacon-poc/
 
 ## Key Components
 
-- **Game Crawler** — automatically indexes Roblox games by keyword
-- **Embedding Pipeline** — OpenAI embeddings stored in PostgreSQL via pgvector
-- **Recommendation API** — FastAPI + cosine similarity search for personalized results
-- **Discovery UI** — React swipe interface modeling Steam's discovery queue
+- **Game Crawler:** automatically indexes Roblox games by keyword
+- **Embedding Pipeline:** OpenAI embeddings stored in PostgreSQL via pgvector
+- **Recommendation API:** FastAPI + cosine similarity search for personalized results
+- **Discovery UI:** React swipe interface modeling Steam's discovery queue
 
 ---
 
 ## What Came Next
 
-This PoC graduated into **[PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile)** — a full production app for families, live on iOS and Android.
+This PoC graduated into **[PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile)**, a full production app for families, live on iOS and Android.
 
 ---
 
