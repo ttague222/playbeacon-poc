@@ -50,7 +50,7 @@ playbeacon-poc/
 
 ## What Came Next
 
-This PoC graduated into **[PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile)**, a full production app for families, live on iOS and Android.
+This PoC graduated into **[PlayBeacon](https://github.com/ttague222/PlayBeacon-Mobile)**, a full production app for teens and Roblox players, live on iOS and Android.
 
 ---
 
