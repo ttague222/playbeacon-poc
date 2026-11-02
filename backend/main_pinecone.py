@@ -7,7 +7,15 @@ from app.db.firebase import initialize_firebase
 from app.config import settings
 import logging
 import asyncio
+import os
 from datetime import timedelta
+
+# Cost control (2026-11-02): the in-process crawl scheduler below only makes sense
+# on an always-on instance, and an always-on Cloud Run instance bills 24/7. It is
+# therefore OFF by default. Set ENABLE_SCHEDULER=true on the Cloud Run service
+# (or use Cloud Scheduler to hit /api/crawler/* endpoints) to turn it back on.
+# Crawler operations remain available on demand via the admin dashboard.
+ENABLE_SCHEDULER = os.environ.get("ENABLE_SCHEDULER", "false").lower() in ("1", "true", "yes")
 
 # Configure logging
 logging.basicConfig(
@@ -45,6 +53,10 @@ async def startup_event():
     try:
         initialize_firebase()
         logger.info("Firebase initialized successfully")
+        if not ENABLE_SCHEDULER:
+            logger.info("Background crawl scheduler disabled (ENABLE_SCHEDULER is not set)")
+            return
+        logger.warning("Background crawl scheduler ENABLED - this requires an always-on instance and bills 24/7")
         # Start background queue worker (hourly)
         asyncio.create_task(scheduler.run_hourly_queue_worker())
         # Schedule daily keyword/sort/graph crawls (using defaults)
